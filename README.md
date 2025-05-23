@@ -30,7 +30,7 @@
 - Clone your application's code repository onto the EC2 instance:
     
     ```bash
-    git clone https://github.com/WasimHannure/DevSecOps.git
+    git clone https://github.com/Umudisly/DevSecOps.git
     ```
     
 
@@ -197,7 +197,7 @@ pipeline {
         }
         stage('Checkout from Git') {
             steps {
-                git branch: 'main', url: 'https://github.com/WasimHannure/DevSecOps.git'
+                git branch: 'main', url: 'https://github.com/Umudisly/DevSecOps.git'
             }
         }
         stage("Sonarqube Analysis") {
@@ -287,7 +287,7 @@ pipeline{
         }
         stage('Checkout from Git'){
             steps{
-                git branch: 'main', url: 'https://github.com/WasimHannure/DevSecOps.git'
+                git branch: 'main', url: 'https://github.com/Umudisly/DevSecOps.git'
             }
         }
         stage("Sonarqube Analysis "){
@@ -326,20 +326,20 @@ pipeline{
                 script{
                    withDockerRegistry(credentialsId: 'docker', toolName: 'docker'){   
                        sh "docker build --build-arg TMDB_V3_API_KEY=<yourapikey> -t netflix ."
-                       sh "docker tag netflix wasimhannure/netflix:latest "
-                       sh "docker push wasimhanure/netflix:latest "
+                       sh "docker tag netflix umudisly/netflix:latest "
+                       sh "docker push umudisly/netflix:latest "
                     }
                 }
             }
         }
         stage("TRIVY"){
             steps{
-                sh "trivy image wasimhannure/netflix:latest > trivyimage.txt" 
+                sh "trivy image umudisly/netflix:latest > trivyimage.txt" 
             }
         }
         stage('Deploy to container'){
             steps{
-                sh 'docker run -d --name netflix -p 8081:80 wasimhannure/netflix:latest'
+                sh 'docker run -d --name netflix -p 8081:80 umudisly/netflix:latest'
             }
         }
     }
