@@ -1,7 +1,7 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: netflix
+  name: netflix-ecommerce
   labels:
     app: netflix-app
 spec:
@@ -16,6 +16,6 @@ spec:
     spec:
       containers:
       - name: netflix-app
-        image: umudisly/custom
+        image: umudisly/ecommerce-web-microservice
         ports:
         - containerPort: 80
