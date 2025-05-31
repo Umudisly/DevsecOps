@@ -16,6 +16,6 @@ spec:
     spec:
       containers:
       - name: netflix-app
-        image: umudisly/netflix:latest
+        image: umudisly/custom
         ports:
         - containerPort: 80
